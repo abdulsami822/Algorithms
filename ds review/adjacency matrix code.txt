@@ -1,0 +1,53 @@
+struct graph
+{
+    int array[10][10];
+    int n;
+};
+
+struct graph * admatrix(struct graph *g)
+{
+    int i,j;
+    for(i = 0;i < g->n;i++)
+    {
+        for(j = 0;j<g->n;j++)
+        {
+            g->array[i][j]= -1;
+        }
+    }
+    
+    printf("node--1 no node--0\n");
+    for(i =0;i<g->n;i++)
+    {
+        for(j = 0;j<g->n;j++)
+        {
+            if(g->array[i][j] == -1 && i!=j)
+            {
+                printf("%d and %d\n",i,j);
+                scanf("%d",&g->array[i][j]);
+                g->array[j][i] = g->array[i][j];
+            }
+            if(i==j)
+            {
+                g->array[i][j] = 0;
+            }
+        }
+    }
+    return g;
+}
+
+void printgraph(struct graph *g)
+{
+    int i,j;
+    for(i = 0;i < g->n;i++)
+    {
+        for(j = 0;j<g->n;j++)
+        {
+            printf("%d ",g->array[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+
+struct graph *g = (struct graph *)(malloc(sizeof(struct graph)));
+    g->n = n;
